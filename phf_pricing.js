@@ -1,3 +1,4 @@
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -227,7 +228,9 @@ function setValuesFromURLParams() {
     
     function waitForJetboost() {
     if (isJetboostReady()) {
-        document.getElementById('calc').classList.add('slide-out-right');
+        let calcDiv = document.getElementById('calc');
+        calcDiv.style.opacity = '1'; 
+        calcDiv.classList.add('slide-out-right');
         setDefaultDisplays();
         setValuesFromURLParams(); 
         setupEventListeners();
@@ -249,14 +252,9 @@ function setValuesFromURLParams() {
     
     function handleSubmitClick(event) {
         event.preventDefault(); 
-        // Ensure the calc div is visible before sliding out again if necessary
-        const calcDiv = document.getElementById('calc');
-        calcDiv.classList.remove('slide-out-right'); // Reset to ensure visibility
-        // Perform any updates necessary
         updateRebateDisplays(); 
         updatePriceDisclaimer();
-        // Optionally, re-trigger the slide-out effect after updates
-        setTimeout(() => calcDiv.classList.add('slide-out-right'), 50); // Small delay for re-trigger
+        
     }
 
     waitForJetboost();
